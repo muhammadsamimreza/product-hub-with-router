@@ -7,10 +7,13 @@ import "./App.css";
 import Home from "./components/Home/Home";
 import Products from "./components/Products/Products";
 import Contact from "./components/Contact/Contact";
+import Loading from "./components/Loading/Loading";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    hydrateFallbackElement: <Loading></Loading>,
     element: <RootLayout></RootLayout>,
     children: [
       {
@@ -19,7 +22,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
+        loader: ()=> fetch('https://fakestoreapi.com/products'),
         element: <Products></Products>,
+      },
+      {
+        path: "/products/:pId",
+        loader: ({params})=> fetch(`https://fakestoreapi.com/products/${params.pId}`),
+        element: <ProductDetails></ProductDetails>,
       },
       {
         path: "/contact",
