@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router";
 
 const ProductDetails = () => {
   const ProductDetail = useLoaderData();
-  const { title, image, price, category } = ProductDetail;
+  const { title, image, price, category, description, rating } = ProductDetail;
   return (
     <div>
       <div className="card bg-white shadow-md w-[600px] mx-auto space-y-5 border border-amber-300">
@@ -12,6 +12,13 @@ const ProductDetails = () => {
         </figure>
         <div className="card-body space-y-3">
           <h2 className="card-title">{title}</h2>
+          <div className="flex justify-between gap-5">
+            <div className="w-30 badge badge-secondary bg-green-400 text-white border-none">
+              {rating.rate}
+            </div>
+            <div className="w-30 badge badge-secondary border-none">NEW</div>
+          </div>
+          <p className="text-left">{description}</p>
           <div className="card-actions justify-between">
             <div className="badge badge-outline bg-green-200">{category}</div>
             <div className="badge badge-outline bg-gray-100">{price}</div>

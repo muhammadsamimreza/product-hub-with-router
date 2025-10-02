@@ -4,7 +4,6 @@ body{
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -19,6 +18,10 @@ body{
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+.active{
+  background-color: green;
+  color: white;
 }
 
 @keyframes logo-spin {
